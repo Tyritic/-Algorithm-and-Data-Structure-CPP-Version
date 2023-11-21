@@ -16,6 +16,6 @@ int main()
 	cout << endl;
 	//for (int i = 0; i < test.numVer; i++)
 		//cout << test.inDegree[i] << endl;
-	test.TopologicalSort();
+	test.BFS(0);
 	
 }
