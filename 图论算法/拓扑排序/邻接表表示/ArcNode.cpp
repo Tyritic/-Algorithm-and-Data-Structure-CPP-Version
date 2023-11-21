@@ -1,10 +1,9 @@
 #include "ArcNode.h"
 
-ArcNode::ArcNode(int v, ArcNode* next,int weight)
+ArcNode::ArcNode(int v, ArcNode* next)
 {
 	this->adjVertex = v;
 	this->nextArc = next;
-	this->weight = weight;
 }
 
 ArcNode::ArcNode()
