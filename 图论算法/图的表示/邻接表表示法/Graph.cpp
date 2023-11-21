@@ -1,7 +1,7 @@
 #include "Graph.h"
 
-Graph::Graph(int numVer,int numArc)
-	:numVer(numVer)
+Graph::Graph(int numVer)
+	:numVer(numVer),numArc(0)
 {
 	vertices = new VertexNode[numVer];
 	visited = new bool[numVer];
