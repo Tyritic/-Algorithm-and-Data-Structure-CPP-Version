@@ -12,10 +12,10 @@ Graph::Graph(int numVer,int numArc)
 
 void Graph::initVertex()
 {
-	cout << "ÊäÈë¶¥µãÊı¾İ" << endl;
+	cout << "è¾“å…¥é¡¶ç‚¹æ•°æ®" << endl;
 	for (int i = 0; i < numVer; i++)
 	{
-		cout << "vertex" << i << "£º" ;
+		cout << "vertex" << i << "ï¼š" ;
 		string data;
 		cin >> data;
 		VertexNode temp(data);
@@ -27,13 +27,12 @@ void Graph::initVertex()
 	}
 }
 
-void Graph::addEdge(int from, int to,int weight)
+void Graph::addEdge(int from, int to)
 {
 		ArcNode* temp = new ArcNode;
-		temp->adjVertex = to;//½«±ß±í½áµãÖ¸ÏòµÄ¶¥µãÔÚ¶¥µã¼¯ÖĞµÄÎ»ÖÃÉèÎªto
-		temp->nextArc= vertices[from].firstArc;//½«±ß±í½ÚµãÖ¸ÏòÏÂÒ»Ìõ»¡µÄ±ß±í½ÚµãºÍ¶¥µã¼¯ÖĞÏÂ±êÎªfromµÄ¶¥µãÏàÁ¬
-		temp->weight = weight;
-		vertices[from].firstArc = temp;//½«ÆğÊ¼¶¥µãµÄÒÀ¸½µÄµÚÒ»Ìõ»¡ºÍĞÂ±ßÏàÁ¬
+		temp->adjVertex = to;//å°†è¾¹è¡¨ç»“ç‚¹æŒ‡å‘çš„é¡¶ç‚¹åœ¨é¡¶ç‚¹é›†ä¸­çš„ä½ç½®è®¾ä¸ºto
+		temp->nextArc= vertices[from].firstArc;//å°†è¾¹è¡¨èŠ‚ç‚¹æŒ‡å‘ä¸‹ä¸€æ¡å¼§çš„è¾¹è¡¨èŠ‚ç‚¹å’Œé¡¶ç‚¹é›†ä¸­ä¸‹æ ‡ä¸ºfromçš„é¡¶ç‚¹ç›¸è¿
+		vertices[from].firstArc = temp;//å°†èµ·å§‹é¡¶ç‚¹çš„ä¾é™„çš„ç¬¬ä¸€æ¡å¼§å’Œæ–°è¾¹ç›¸è¿
 		inDegree[to]++;
 		numArc++;
 }
@@ -42,7 +41,7 @@ void Graph::printLink(ArcNode* next)
 {
 	while (next != NULL)
 	{
-		cout << vertices[next->adjVertex].data << " ";//Êä³ö±ß±í½ÚµãÖ¸Ïò¶¥µãÔÚ¶¥µã¼¯ÖĞµÄÎ»ÖÃ¶ÔÓ¦µÄ¶¥µãÊı¾İ
+		cout << vertices[next->adjVertex].data << " ";//è¾“å‡ºè¾¹è¡¨èŠ‚ç‚¹æŒ‡å‘é¡¶ç‚¹åœ¨é¡¶ç‚¹é›†ä¸­çš„ä½ç½®å¯¹åº”çš„é¡¶ç‚¹æ•°æ®
 		next = next->nextArc;
 	}
 	cout << endl;
@@ -50,10 +49,10 @@ void Graph::printLink(ArcNode* next)
 
 void Graph::display()
 {
-	cout << "ÁÚ½Ó±íÎª£º" << endl;
+	cout << "é‚»æ¥è¡¨ä¸ºï¼š" << endl;
 	for (int i = 0; i < numVer; i++)
 	{
-		cout << "vertex" << i << "£º";
+		cout << "vertex" << i << "ï¼š";
 		cout << vertices[i].data << " ";
 		printLink(vertices[i].firstArc);
 	}
@@ -73,13 +72,12 @@ int Graph::getVertex(string data)
 	}
 }
 
-void Graph::addEdge(string from, string to,int weight)
+void Graph::addEdge(string from, string to)
 {
 	
 		ArcNode* temp = new ArcNode;
 		temp->adjVertex = getVertex(to);
 		temp->nextArc = vertices[getVertex(from)].firstArc;
-		temp->weight = weight;
 		vertices[getVertex(from)].firstArc = temp;
 		inDegree[getVertex(to)]++;
 		numArc++;
@@ -94,7 +92,7 @@ int Graph::FirstNeighbor(int v)
 	}
 	else 
 	{
-		return -1; // ·µ»Ø-1±íÊ¾ÎŞÁÚ½Óµã
+		return -1; // è¿”å›-1è¡¨ç¤ºæ— é‚»æ¥ç‚¹
 	}
 }
 
@@ -103,117 +101,44 @@ int Graph::NextNeighbor(int v, int w)
 	ArcNode* p = vertices[v].firstArc;
 	while (p != NULL && p->adjVertex == w) 
 	{
-		p = p->nextArc; // Ìø¹ıw
+		p = p->nextArc; // è·³è¿‡w
 	}
 	if (p != NULL) 
 	{
-		return p->adjVertex; // ·µ»ØÏÂÒ»¸öÁÚ½Óµã
+		return p->adjVertex; // è¿”å›ä¸‹ä¸€ä¸ªé‚»æ¥ç‚¹
 	}
 	else 
 	{
-		return -1; // Ã»ÓĞÏÂÒ»¸öÁÚ½ÓµãÁË
+		return -1; // æ²¡æœ‰ä¸‹ä¸€ä¸ªé‚»æ¥ç‚¹äº†
 	}
 }
 
-void Graph::BFS(int v)
-{
-	cout << vertices[v].data << endl;
-	visited[v] = true;
-	queue <int>Q;
-	Q.push(v);//½«ÆğÊ¼¶¥µãÈë¶Ó
-	while (!Q.empty())
-	{
-		int u = Q.front();
-		if (!visited[u])//Èô¶ÓÍ·¶¥µãÎ´±»·ÃÎÊ
-		{
-			cout <<vertices[u].data << endl;
-			visited[u] = true;
-		}
-		Q.pop();//¶ÓÍ·¶¥µã³ö¶Ó
-		ArcNode* temp = vertices[u].firstArc;//ÉètempÎª¶ÓÍ·¶¥µãµÄµÚÒ»Ìõ»¡
-		while (temp != NULL)
-		{
-			Q.push(temp->adjVertex);//»¡ËùÖ¸ÏòµÄ¶¥µãÈë¶Ó
-			temp=temp->nextArc;//Ïòºó±éÀú
-		}
-		
-	}
-
-}
-
-void Graph::DFS(int v)
-{
-	if (visited[v])//Èç¹û¸Ã½áµãÒÑ¾­±»·ÃÎÊÔò·µ»Ø 
-		return;
-	cout << vertices[v].data<< endl;
-	visited[v] = true;
-	ArcNode* temp = vertices[v].firstArc;//ÉètempÎª¶ÓÍ·¶¥µãµÄµÚÒ»Ìõ»¡
-	while (temp)
-	{
-		DFS(temp->adjVertex);
-		temp = temp->nextArc;//Ïòºó±éÀú
-	}
-}
-
-void Graph::Dijkstra(int v)
-{
-	int* distance = new int[numArc];
-	for (int i = 0; i < numVer; i++)
-		distance[i] = INFINITY;
-	for (int i = 0; i < numVer; i++)
-	{
-		visited[i] = false;
-	}
-	distance[v] = 0;
-	for (int i = 0; i < numVer; i++)
-	{
-		int j=0;
-		for (int k = 0; k < numVer; k++)
-		{
-			if (!visited[k] && distance[k] <= distance[j])
-			{
-				j = k;
-			}
-		}
-		visited[j] = true;
-		ArcNode* temp = vertices[j].firstArc;//ÉètempÎª¶ÓÍ·¶¥µãµÄµÚÒ»Ìõ»¡
-		while (temp != NULL)
-		{
-			distance[temp->adjVertex] = min(distance[temp->adjVertex], distance[j] + temp->weight);
-			temp = temp->nextArc;//Ïòºó±éÀú
-		}
-	}
-	for (int i = 0; i < numVer; i++)
-	{
-		cout << distance[i] << endl;
-	}
-}
 
 bool Graph::TopologicalSort()
 {
 	stack<int>q;
 	for (int i = 0; i < numVer; i++)
 	{
-		if (inDegree[i] == 0)//Èç¹ûÈë¶ÈÎª0ÔòÑ¹ÈëÕ»ÖĞ
+		if (inDegree[i] == 0)//å¦‚æœå…¥åº¦ä¸º0åˆ™å‹å…¥æ ˆä¸­
 			q.push(i);
 	}
-	int count = 0;//¼ÇÂ¼Êä³öµÄ¶¥µãÊı
+	int count = 0;//è®°å½•è¾“å‡ºçš„é¡¶ç‚¹æ•°
 	while (!q.empty())
 	{
-		int p = q.top();//Õ»¶¥ÔªËØ
+		int p = q.top();//æ ˆé¡¶å…ƒç´ 
 		q.pop();
 		cout << vertices[p].data << endl;
 		count++;
-		ArcNode* temp = vertices[p].firstArc;//ÉètempÎªÕ»¶¥¶¥µãµÄµÚÒ»Ìõ»¡
-		while (temp != NULL)//±éÀúËùÓĞºÍÕ»¶¥ÔªËØÏàÁ¬µÄ¶¥µã
+		ArcNode* temp = vertices[p].firstArc;//è®¾tempä¸ºæ ˆé¡¶é¡¶ç‚¹çš„ç¬¬ä¸€æ¡å¼§
+		while (temp != NULL)//éå†æ‰€æœ‰å’Œæ ˆé¡¶å…ƒç´ ç›¸è¿çš„é¡¶ç‚¹
 		{
-			inDegree[temp->adjVertex]--;//Èë¶È¼õÒ»
-			if (!inDegree[temp->adjVertex])//Èç¹ûÈë¶ÈÎª0ÔòÑ¹ÈëÕ»ÖĞ
+			inDegree[temp->adjVertex]--;//å…¥åº¦å‡ä¸€
+			if (!inDegree[temp->adjVertex])//å¦‚æœå…¥åº¦ä¸º0åˆ™å‹å…¥æ ˆä¸­
 				q.push(temp->adjVertex);
-			temp = temp->nextArc;//Ïòºó±éÀú
+			temp = temp->nextArc;//å‘åéå†
 		}	
 	}
-	if (count < numVer)return false;//ÈôÒ»´Î±éÀú²»ÍêÔò´æÔÚ»·
+	if (count < numVer)return false;//è‹¥ä¸€æ¬¡éå†ä¸å®Œåˆ™å­˜åœ¨ç¯
 	return true;
 }
 
