@@ -13,7 +13,7 @@ public:
 	int numVer, numArc;//顶点数和边数
 	int* inDegree;//记录顶点的入度
 public:
-	Graph(int numVer, int numArc);
+	Graph(int numVer);
 	void initVertex();//初始化顶点集合
 	void addEdge(int from, int to,int weight);//添加边，输入起始顶点和终点顶点在顶点集中的数组下标
 	void printLink(ArcNode*next);//打印邻接表中链表的节点数据*
