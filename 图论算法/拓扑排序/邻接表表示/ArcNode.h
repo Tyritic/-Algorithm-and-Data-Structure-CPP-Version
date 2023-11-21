@@ -4,9 +4,8 @@ using namespace std;
 class ArcNode
 {
 public:
-	int adjVertex;//¸Ã»¡Ö¸Ïò¶¥µãÔÚ¶¥µã¼¯ÖĞµÄÎ»ÖÃ
-	ArcNode* nextArc;//Ö¸ÏòÏÂÒ»Ìõ»¡µÄÖ¸Õë
-	int weight;
+	int adjVertex;//è¯¥å¼§æŒ‡å‘é¡¶ç‚¹åœ¨é¡¶ç‚¹é›†ä¸­çš„ä½ç½®
+	ArcNode* nextArc;//æŒ‡å‘ä¸‹ä¸€æ¡å¼§çš„æŒ‡é’ˆ
 public:
 	ArcNode(int v, ArcNode* next,int weight);
 	ArcNode();
