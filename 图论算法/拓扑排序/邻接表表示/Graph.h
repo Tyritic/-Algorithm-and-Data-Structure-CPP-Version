@@ -8,24 +8,21 @@ using namespace std;
 class Graph
 {
 public:
-	VertexNode* vertices;//¶¥µã¼¯ºÏ
-	bool* visited;//±ê¼Ç·ÃÎÊÇé¿ö
-	int numVer, numArc;//¶¥µãÊıºÍ±ßÊı
-	int* inDegree;//¼ÇÂ¼¶¥µãµÄÈë¶È
+	VertexNode* vertices;//é¡¶ç‚¹é›†åˆ
+	bool* visited;//æ ‡è®°è®¿é—®æƒ…å†µ
+	int numVer, numArc;//é¡¶ç‚¹æ•°å’Œè¾¹æ•°
+	int* inDegree;//è®°å½•é¡¶ç‚¹çš„å…¥åº¦
 public:
 	Graph(int numVer, int numArc);
-	void initVertex();//³õÊ¼»¯¶¥µã¼¯ºÏ
-	void addEdge(int from, int to,int weight);//Ìí¼Ó±ß£¬ÊäÈëÆğÊ¼¶¥µãºÍÖÕµã¶¥µãÔÚ¶¥µã¼¯ÖĞµÄÊı×éÏÂ±ê
-	void printLink(ArcNode*next);//´òÓ¡ÁÚ½Ó±íÖĞÁ´±íµÄ½ÚµãÊı¾İ*
-	void display();//´òÓ¡ÁÚ½Ó±í
-	void getNeighbors(int v);//»ñÈ¡¸ø¶¨¶¥µãµÄÁÚ½Ó¶¥µã
-	int getVertex(string data);//¸ù¾İÊı¾İ²éÕÒ¶¥µã
-	void addEdge(string from, string to,int weight);//Ìí¼Ó±ß£¬ÊäÈëÆğÊ¼¶¥µãºÍÖÕµã¶¥µãµÄÊı¾İ
+	void initVertex();//åˆå§‹åŒ–é¡¶ç‚¹é›†åˆ
+	void addEdge(int from, int to,int weight);//æ·»åŠ è¾¹ï¼Œè¾“å…¥èµ·å§‹é¡¶ç‚¹å’Œç»ˆç‚¹é¡¶ç‚¹åœ¨é¡¶ç‚¹é›†ä¸­çš„æ•°ç»„ä¸‹æ ‡
+	void printLink(ArcNode*next);//æ‰“å°é‚»æ¥è¡¨ä¸­é“¾è¡¨çš„èŠ‚ç‚¹æ•°æ®*
+	void display();//æ‰“å°é‚»æ¥è¡¨
+	void getNeighbors(int v);//è·å–ç»™å®šé¡¶ç‚¹çš„é‚»æ¥é¡¶ç‚¹
+	int getVertex(string data);//æ ¹æ®æ•°æ®æŸ¥æ‰¾é¡¶ç‚¹
+	void addEdge(string from, string to,int weight);//æ·»åŠ è¾¹ï¼Œè¾“å…¥èµ·å§‹é¡¶ç‚¹å’Œç»ˆç‚¹é¡¶ç‚¹çš„æ•°æ®
 	int FirstNeighbor(int v);
 	int NextNeighbor(int v, int w);
-	void BFS(int v);
-	void DFS(int v);
-	void Dijkstra(int v);
 	bool TopologicalSort();
 };
 
