@@ -17,11 +17,22 @@ void LinkList::BuildListByHeadInsert(int ele)
 {
 	Size++;
 	LinkNode* Temp = new LinkNode(ele);
-	//新节点和头节点的后驱建立双向联系
-	Temp->Next = Head->Next;
-        //新节点和头节点建立双向联系
-        Temp->Prev = Head;
-	Head->Next = Temp;
+        //若头节点后无节点
+	if (Head->Next == NULL)
+	{
+		//新节点和头节点建立双向联系
+		Temp->Prev = Head;
+		Head->Next = Temp;
+	}
+	else
+	{
+		//新节点和头节点的后驱建立双向联系
+		Head->Next->Prev = Temp;//将当前节点的后一个节点的上一个节点设为新节点
+		Temp->Next = Head->Next;//将新节点的下一个节点为当前节点的下一个节点
+                //新节点和头节点建立双向联系
+		Temp->Prev = Head;
+		Head->Next = Temp;
+	}
 	//setTail();
 	if (Temp->Next == nullptr)
 	{
@@ -46,12 +57,12 @@ void LinkList::BackwardInsert(int ele)
 {
 	Size++;
 	LinkNode* Temp = new LinkNode(ele);
-	//和当前节点的后一个节点建立双向联系
-	Temp->Next = Curr->Next;//将新节点的下一个节点为当前节点的下一个节点
-	Curr->Next->Prev = Temp;//将当前节点的后一个节点的上一个节点设为新节点
+	//和当前位置的后驱节点建立双向联系
+	Temp->Next = Curr->Next;//将新节点的next为插入位置的next相连
+	Curr->Next->Prev = Temp;//将插入位置的next的prev和新节点相连
 	//和当前节点建立双向联系
-	Temp->Prev = Curr;//将新节点的上一个节点设为当前节点
-	Curr->Next = Temp;//将当前节点的下一个节点设为新节点
+	Temp->Prev = Curr;//将新节点的prev设为当前位置
+	Curr->Next = Temp;//将当前位置的next设为新节点
 	if (Temp->Next == nullptr)Tail = Temp;
 	
 	
@@ -61,12 +72,12 @@ void LinkList::ForwardInsert(int ele)
 {
 	Size++;
 	LinkNode* Temp = new LinkNode(ele);
-	//和当前节点的后一个节点建立双向联系
-	Temp->Next = Curr->Next;//将新节点的下一个节点为当前节点的下一个节点
-	Curr->Next->Prev = Temp;//将当前节点的后一个节点的上一个节点设为新节点
+	//和当前位置的后驱节点建立双向联系
+	Temp->Next = Curr->Next;//将新节点的next为插入位置的next相连
+	Curr->Next->Prev = Temp;//将插入位置的next的prev和新节点相连
 	//和当前节点建立双向联系
-	Temp->Prev = Curr;//将新节点的上一个节点设为当前节点
-	Curr->Next = Temp;//将当前节点的下一个节点设为新节点
+	Temp->Prev = Curr;//将新节点的prev设为当前位置
+	Curr->Next = Temp;//将当前位置的next设为新节点
 	swap(Temp->Data, Curr->Data);
 }
 
@@ -105,9 +116,9 @@ void LinkList::Delete()
 {
 	Size--;
 	LinkNode* Temp = Curr->Next;//被删除节点
-	//和当前节点的下一个节点的下一个节点进行双向关联
-	Curr->Next = Temp->Next;
-	Temp->Next->Prev = Curr;
+	//和被删除节点的后驱节点进行双向关联
+	Curr->Next = Temp->Next;//当前位置的next和被删除节点的后驱节点相连
+	Temp->Next->Prev = Curr;//被删除节点的后驱节点的prev指向当前位置
 	delete Temp;
 	if (Curr->Next == NULL)Tail = Curr;
 }
@@ -116,9 +127,9 @@ void LinkList::DeleteByNode(LinkNode* Node)
 {
 	Size--;
 	LinkNode* Temp = Node->Next;//被删除节点
-	//和当前节点的下一个节点的下一个节点进行双向关联
-	Node->Next = Temp->Next;
-	Temp->Next->Prev = Node;
+	//和被删除节点的后驱节点进行双向关联
+	Node->Next = Temp->Next;//删除位置的next和被删除节点的后驱节点相连
+	Temp->Next->Prev = Node;//被删除节点的后驱节点的prev指向删除位置
 	delete Temp;
 	if (Node->Next == NULL)Tail = Node;
 }
