@@ -5,35 +5,35 @@ using namespace std;
 class LinkList
 {
 private:
-	LinkNode* Head;//Í·½Úµã
-	LinkNode* Curr;//µ±Ç°½Úµã
-	LinkNode* Tail;//Î²½Úµã
+	LinkNode* Head;//å¤´èŠ‚ç‚¹
+	LinkNode* Curr;//å½“å‰èŠ‚ç‚¹
+	LinkNode* Tail;//å°¾èŠ‚ç‚¹
 	int Size;
 public:
 	LinkList();
-	bool isEmpty();//ÅĞ¿Õ
-	void BuildListByHeadInsert(int ele);//Í·²å·¨½¨±í
-	void BuildListByTailInsert(int ele);//Î²²å·¨½¨±íÍ¬Ê±ÔÚÎ²½Úµã´¦²åÈë½Úµã
-	void BackwardInsert(int ele);//	ÔÚµ±Ç°½Úµã(Î»ÓÚÖĞ¼ä£©µÄºóÒ»¸ö½Úµã²åÈëÒ»¸öĞÂ½Úµã
-	void ForwardInsert(int ele);//	ÔÚµ±Ç°½Úµã£¨Î»ÓÚÖĞ¼ä£©µÄÇ°Ò»¸ö½Úµã²åÈëÒ»¸öĞÂ½Úµã
-	void BackwardInsertByNode(int ele, LinkNode* Node);//ÔÚÒÑÖª½Úµã(Î»ÓÚÖĞ¼ä£©µÄºóÒ»¸ö½Úµã²åÈëÒ»¸öĞÂ½Úµã
-	void ForwardInsertByNode(int ele, LinkNode* Node);//ÔÚÒÑÖª½Úµã(Î»ÓÚÖĞ¼ä£©µÄÇ°Ò»¸ö½Úµã²åÈëÒ»¸öĞÂ½Úµã
-	int getSize();//»ñÈ¡±í³¤
-	void Delete();//É¾³ıµ±Ç°½ÚµãµÄÏÂÒ»¸ö½Úµã
-	void DeleteByNode(LinkNode* Node);//É¾³ıÒÑÖª½ÚµãµÄÏÂÒ»¸ö½Úµã
-	int getCurr();//»ñÈ¡µ±Ç°½ÚµãµÄÊı¾İ
-	void SequentialPrint();//Ë³Ğò´òÓ¡Á´±í
-	void ReversePrint();//Ë³Ğò´òÓ¡Á´±í
-	LinkNode* GetHead();//»ñÈ¡Í·½Úµã
-	void Prev();//½«µ±Ç°½ÚµãºóÒÆÒ»Î»
-	int Find(int ele);//°´Öµ²éÕÒ½Úµã
-	int At(int pos);//°´Î»ÖÃ²éÕÒ½Úµã
-	void Clear();//Çå¿ÕÁ´±íÄÚÔªËØµ«²»É¾³ı
-	void Destory();//Ïú»ÙÁ´±í
-	LinkNode* GetElemByPos(int pos);//°´Î»ÖÃ²éÕÒ½Úµã
-	LinkNode* GetElemByValue(int ele);//°´Öµ²éÕÒ½Úµã
-	void setTail();//ÉèÖÃÎ²½Úµã
-	int CaculateSize();//¼ÆËãÁ´±í³¤
+	bool isEmpty();//åˆ¤ç©º
+	void BuildListByHeadInsert(int ele);//å¤´æ’æ³•å»ºè¡¨
+	void BuildListByTailInsert(int ele);//å°¾æ’æ³•å»ºè¡¨åŒæ—¶åœ¨å°¾èŠ‚ç‚¹å¤„æ’å…¥èŠ‚ç‚¹
+	void BackwardInsert(int ele);//	åœ¨å½“å‰èŠ‚ç‚¹(ä½äºä¸­é—´ï¼‰çš„åä¸€ä¸ªèŠ‚ç‚¹æ’å…¥ä¸€ä¸ªæ–°èŠ‚ç‚¹
+	void ForwardInsert(int ele);//	åœ¨å½“å‰èŠ‚ç‚¹ï¼ˆä½äºä¸­é—´ï¼‰çš„å‰ä¸€ä¸ªèŠ‚ç‚¹æ’å…¥ä¸€ä¸ªæ–°èŠ‚ç‚¹
+	void BackwardInsertByNode(int ele, LinkNode* Node);//åœ¨å·²çŸ¥èŠ‚ç‚¹(ä½äºä¸­é—´ï¼‰çš„åä¸€ä¸ªèŠ‚ç‚¹æ’å…¥ä¸€ä¸ªæ–°èŠ‚ç‚¹
+	void ForwardInsertByNode(int ele, LinkNode* Node);//åœ¨å·²çŸ¥èŠ‚ç‚¹(ä½äºä¸­é—´ï¼‰çš„å‰ä¸€ä¸ªèŠ‚ç‚¹æ’å…¥ä¸€ä¸ªæ–°èŠ‚ç‚¹
+	int getSize();//è·å–è¡¨é•¿
+	void Delete();//åˆ é™¤å½“å‰èŠ‚ç‚¹çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹
+	void DeleteByNode(LinkNode* Node);//åˆ é™¤å·²çŸ¥èŠ‚ç‚¹çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹
+	int getCurr();//è·å–å½“å‰èŠ‚ç‚¹çš„æ•°æ®
+	void SequentialPrint();//é¡ºåºæ‰“å°é“¾è¡¨
+	void ReversePrint();//å€’åºæ‰“å°é“¾è¡¨
+	LinkNode* GetHead();//è·å–å¤´èŠ‚ç‚¹
+	void Prev();//å°†å½“å‰èŠ‚ç‚¹åç§»ä¸€ä½
+	int Find(int ele);//æŒ‰å€¼æŸ¥æ‰¾èŠ‚ç‚¹
+	int At(int pos);//æŒ‰ä½ç½®æŸ¥æ‰¾èŠ‚ç‚¹
+	void Clear();//æ¸…ç©ºé“¾è¡¨å†…å…ƒç´ ä½†ä¸åˆ é™¤
+	void Destory();//é”€æ¯é“¾è¡¨
+	LinkNode* GetElemByPos(int pos);//æŒ‰ä½ç½®æŸ¥æ‰¾èŠ‚ç‚¹
+	LinkNode* GetElemByValue(int ele);//æŒ‰å€¼æŸ¥æ‰¾èŠ‚ç‚¹
+	void setTail();//è®¾ç½®å°¾èŠ‚ç‚¹
+	int CaculateSize();//è®¡ç®—é“¾è¡¨é•¿
 	int getTail();
 };
 
