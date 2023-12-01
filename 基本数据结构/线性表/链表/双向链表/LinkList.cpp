@@ -17,9 +17,10 @@ void LinkList::BuildListByHeadInsert(int ele)
 {
 	Size++;
 	LinkNode* Temp = new LinkNode(ele);
-	//ÐÂ½ÚµãºÍÍ·½ÚµãµÄºóÇý½¨Á¢Ë«ÏòÁªÏµ
+	//æ–°èŠ‚ç‚¹å’Œå¤´èŠ‚ç‚¹çš„åŽé©±å»ºç«‹åŒå‘è”ç³»
 	Temp->Next = Head->Next;
-	Temp->Prev = Head;
+        //æ–°èŠ‚ç‚¹å’Œå¤´èŠ‚ç‚¹å»ºç«‹åŒå‘è”ç³»
+        Temp->Prev = Head;
 	Head->Next = Temp;
 	//setTail();
 	if (Temp->Next == nullptr)
@@ -32,7 +33,7 @@ void LinkList::BuildListByTailInsert(int ele)
 {
 	Size++;
 	LinkNode* Temp = new LinkNode(ele);
-	//ºÍÎ²½Úµã½¨Á¢Ë«ÏòÁªÏµ
+	//å’Œå°¾èŠ‚ç‚¹å»ºç«‹åŒå‘è”ç³»
 	if (Tail->Next == nullptr)
 	{
 		Tail->Next = Temp;
@@ -45,12 +46,12 @@ void LinkList::BackwardInsert(int ele)
 {
 	Size++;
 	LinkNode* Temp = new LinkNode(ele);
-	//ºÍµ±Ç°½ÚµãµÄºóÒ»¸ö½Úµã½¨Á¢Ë«ÏòÁªÏµ
-	Temp->Next = Curr->Next;//½«ÐÂ½ÚµãµÄÏÂÒ»¸ö½ÚµãÎªµ±Ç°½ÚµãµÄÏÂÒ»¸ö½Úµã
-	Curr->Next->Prev = Temp;//½«µ±Ç°½ÚµãµÄºóÒ»¸ö½ÚµãµÄÉÏÒ»¸ö½ÚµãÉèÎªÐÂ½Úµã
-	//ºÍµ±Ç°½Úµã½¨Á¢Ë«ÏòÁªÏµ
-	Temp->Prev = Curr;//½«ÐÂ½ÚµãµÄÉÏÒ»¸ö½ÚµãÉèÎªµ±Ç°½Úµã
-	Curr->Next = Temp;//½«µ±Ç°½ÚµãµÄÏÂÒ»¸ö½ÚµãÉèÎªÐÂ½Úµã
+	//å’Œå½“å‰èŠ‚ç‚¹çš„åŽä¸€ä¸ªèŠ‚ç‚¹å»ºç«‹åŒå‘è”ç³»
+	Temp->Next = Curr->Next;//å°†æ–°èŠ‚ç‚¹çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹ä¸ºå½“å‰èŠ‚ç‚¹çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹
+	Curr->Next->Prev = Temp;//å°†å½“å‰èŠ‚ç‚¹çš„åŽä¸€ä¸ªèŠ‚ç‚¹çš„ä¸Šä¸€ä¸ªèŠ‚ç‚¹è®¾ä¸ºæ–°èŠ‚ç‚¹
+	//å’Œå½“å‰èŠ‚ç‚¹å»ºç«‹åŒå‘è”ç³»
+	Temp->Prev = Curr;//å°†æ–°èŠ‚ç‚¹çš„ä¸Šä¸€ä¸ªèŠ‚ç‚¹è®¾ä¸ºå½“å‰èŠ‚ç‚¹
+	Curr->Next = Temp;//å°†å½“å‰èŠ‚ç‚¹çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹è®¾ä¸ºæ–°èŠ‚ç‚¹
 	if (Temp->Next == nullptr)Tail = Temp;
 	
 	
@@ -60,12 +61,12 @@ void LinkList::ForwardInsert(int ele)
 {
 	Size++;
 	LinkNode* Temp = new LinkNode(ele);
-	//ºÍµ±Ç°½ÚµãµÄºóÒ»¸ö½Úµã½¨Á¢Ë«ÏòÁªÏµ
-	Temp->Next = Curr->Next;//½«ÐÂ½ÚµãµÄÏÂÒ»¸ö½ÚµãÎªµ±Ç°½ÚµãµÄÏÂÒ»¸ö½Úµã
-	Curr->Next->Prev = Temp;//½«µ±Ç°½ÚµãµÄºóÒ»¸ö½ÚµãµÄÉÏÒ»¸ö½ÚµãÉèÎªÐÂ½Úµã
-	//ºÍµ±Ç°½Úµã½¨Á¢Ë«ÏòÁªÏµ
-	Temp->Prev = Curr;//½«ÐÂ½ÚµãµÄÉÏÒ»¸ö½ÚµãÉèÎªµ±Ç°½Úµã
-	Curr->Next = Temp;//½«µ±Ç°½ÚµãµÄÏÂÒ»¸ö½ÚµãÉèÎªÐÂ½Úµã
+	//å’Œå½“å‰èŠ‚ç‚¹çš„åŽä¸€ä¸ªèŠ‚ç‚¹å»ºç«‹åŒå‘è”ç³»
+	Temp->Next = Curr->Next;//å°†æ–°èŠ‚ç‚¹çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹ä¸ºå½“å‰èŠ‚ç‚¹çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹
+	Curr->Next->Prev = Temp;//å°†å½“å‰èŠ‚ç‚¹çš„åŽä¸€ä¸ªèŠ‚ç‚¹çš„ä¸Šä¸€ä¸ªèŠ‚ç‚¹è®¾ä¸ºæ–°èŠ‚ç‚¹
+	//å’Œå½“å‰èŠ‚ç‚¹å»ºç«‹åŒå‘è”ç³»
+	Temp->Prev = Curr;//å°†æ–°èŠ‚ç‚¹çš„ä¸Šä¸€ä¸ªèŠ‚ç‚¹è®¾ä¸ºå½“å‰èŠ‚ç‚¹
+	Curr->Next = Temp;//å°†å½“å‰èŠ‚ç‚¹çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹è®¾ä¸ºæ–°èŠ‚ç‚¹
 	swap(Temp->Data, Curr->Data);
 }
 
@@ -73,12 +74,12 @@ void LinkList::BackwardInsertByNode(int ele, LinkNode* Node)
 {
 	Size++;
 	LinkNode* Temp = new LinkNode(ele);
-	//ºÍµ±Ç°½ÚµãµÄºóÒ»¸ö½Úµã½¨Á¢Ë«ÏòÁªÏµ
-	Temp->Next = Node->Next;//½«ÐÂ½ÚµãµÄÏÂÒ»¸ö½ÚµãÎªµ±Ç°½ÚµãµÄÏÂÒ»¸ö½Úµã
-	Node->Next->Prev = Temp;//½«µ±Ç°½ÚµãµÄºóÒ»¸ö½ÚµãµÄÉÏÒ»¸ö½ÚµãÉèÎªÐÂ½Úµã
-	//ºÍµ±Ç°½Úµã½¨Á¢Ë«ÏòÁªÏµ
-	Temp->Prev = Node;//½«ÐÂ½ÚµãµÄÉÏÒ»¸ö½ÚµãÉèÎªµ±Ç°½Úµã
-	Node->Next = Temp;//½«µ±Ç°½ÚµãµÄÏÂÒ»¸ö½ÚµãÉèÎªÐÂ½Úµã
+	//å’Œå½“å‰èŠ‚ç‚¹çš„åŽä¸€ä¸ªèŠ‚ç‚¹å»ºç«‹åŒå‘è”ç³»
+	Temp->Next = Node->Next;//å°†æ–°èŠ‚ç‚¹çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹ä¸ºå½“å‰èŠ‚ç‚¹çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹
+	Node->Next->Prev = Temp;//å°†å½“å‰èŠ‚ç‚¹çš„åŽä¸€ä¸ªèŠ‚ç‚¹çš„ä¸Šä¸€ä¸ªèŠ‚ç‚¹è®¾ä¸ºæ–°èŠ‚ç‚¹
+	//å’Œå½“å‰èŠ‚ç‚¹å»ºç«‹åŒå‘è”ç³»
+	Temp->Prev = Node;//å°†æ–°èŠ‚ç‚¹çš„ä¸Šä¸€ä¸ªèŠ‚ç‚¹è®¾ä¸ºå½“å‰èŠ‚ç‚¹
+	Node->Next = Temp;//å°†å½“å‰èŠ‚ç‚¹çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹è®¾ä¸ºæ–°èŠ‚ç‚¹
 	if (Temp->Next == nullptr)Tail = Temp;
 }
 
@@ -86,12 +87,12 @@ void LinkList::ForwardInsertByNode(int ele, LinkNode* Node)
 {
 	Size++;
 	LinkNode* Temp = new LinkNode(ele);
-	//ºÍµ±Ç°½ÚµãµÄºóÒ»¸ö½Úµã½¨Á¢Ë«ÏòÁªÏµ
-	Temp->Next = Node->Next;//½«ÐÂ½ÚµãµÄÏÂÒ»¸ö½ÚµãÎªµ±Ç°½ÚµãµÄÏÂÒ»¸ö½Úµã
-	Node->Next->Prev = Temp;//½«µ±Ç°½ÚµãµÄºóÒ»¸ö½ÚµãµÄÉÏÒ»¸ö½ÚµãÉèÎªÐÂ½Úµã
-	//ºÍµ±Ç°½Úµã½¨Á¢Ë«ÏòÁªÏµ
-	Temp->Prev = Node;//½«ÐÂ½ÚµãµÄÉÏÒ»¸ö½ÚµãÉèÎªµ±Ç°½Úµã
-	Node->Next = Temp;//½«µ±Ç°½ÚµãµÄÏÂÒ»¸ö½ÚµãÉèÎªÐÂ½Úµã
+	//å’Œå½“å‰èŠ‚ç‚¹çš„åŽä¸€ä¸ªèŠ‚ç‚¹å»ºç«‹åŒå‘è”ç³»
+	Temp->Next = Node->Next;//å°†æ–°èŠ‚ç‚¹çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹ä¸ºå½“å‰èŠ‚ç‚¹çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹
+	Node->Next->Prev = Temp;//å°†å½“å‰èŠ‚ç‚¹çš„åŽä¸€ä¸ªèŠ‚ç‚¹çš„ä¸Šä¸€ä¸ªèŠ‚ç‚¹è®¾ä¸ºæ–°èŠ‚ç‚¹
+	//å’Œå½“å‰èŠ‚ç‚¹å»ºç«‹åŒå‘è”ç³»
+	Temp->Prev = Node;//å°†æ–°èŠ‚ç‚¹çš„ä¸Šä¸€ä¸ªèŠ‚ç‚¹è®¾ä¸ºå½“å‰èŠ‚ç‚¹
+	Node->Next = Temp;//å°†å½“å‰èŠ‚ç‚¹çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹è®¾ä¸ºæ–°èŠ‚ç‚¹
 	swap(Temp->Data, Node->Data);
 }
 
@@ -103,8 +104,8 @@ int LinkList::getSize()
 void LinkList::Delete()
 {
 	Size--;
-	LinkNode* Temp = Curr->Next;//±»É¾³ý½Úµã
-	//ºÍµ±Ç°½ÚµãµÄÏÂÒ»¸ö½ÚµãµÄÏÂÒ»¸ö½Úµã½øÐÐË«Ïò¹ØÁª
+	LinkNode* Temp = Curr->Next;//è¢«åˆ é™¤èŠ‚ç‚¹
+	//å’Œå½“å‰èŠ‚ç‚¹çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹è¿›è¡ŒåŒå‘å…³è”
 	Curr->Next = Temp->Next;
 	Temp->Next->Prev = Curr;
 	delete Temp;
@@ -114,8 +115,8 @@ void LinkList::Delete()
 void LinkList::DeleteByNode(LinkNode* Node)
 {
 	Size--;
-	LinkNode* Temp = Node->Next;//±»É¾³ý½Úµã
-	//ºÍµ±Ç°½ÚµãµÄÏÂÒ»¸ö½ÚµãµÄÏÂÒ»¸ö½Úµã½øÐÐË«Ïò¹ØÁª
+	LinkNode* Temp = Node->Next;//è¢«åˆ é™¤èŠ‚ç‚¹
+	//å’Œå½“å‰èŠ‚ç‚¹çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹è¿›è¡ŒåŒå‘å…³è”
 	Node->Next = Temp->Next;
 	Temp->Next->Prev = Node;
 	delete Temp;
@@ -131,13 +132,13 @@ void LinkList::SequentialPrint()
 {
 	if (Head->Next == nullptr)
 	{
-		cout << "¿ÕÁ´±í" << endl;
+		cout << "ç©ºé“¾è¡¨" << endl;
 	}
 	int i = 1;
 	LinkNode* Temp = Head->Next;
 	while (Temp)
 	{
-		cout << "½Úµã" << i << "Îª£º" << Temp->Data << endl;
+		cout << "èŠ‚ç‚¹" << i << "ä¸ºï¼š" << Temp->Data << endl;
 		Temp = Temp->Next;
 		i++;
 	}
@@ -147,13 +148,13 @@ void LinkList::ReversePrint()
 {
 	if (Head->Next == nullptr)
 	{
-		cout << "¿ÕÁ´±í" << endl;
+		cout << "ç©ºé“¾è¡¨" << endl;
 	}
 	int i = 0;
 	LinkNode* Temp = Tail;
 	while (Temp->Prev)
 	{
-		cout << "½Úµã" << Size-i << "Îª£º" << Temp->Data << endl;
+		cout << "èŠ‚ç‚¹" << Size-i << "ä¸ºï¼š" << Temp->Data << endl;
 		Temp = Temp->Prev;
 		i++;
 	}
@@ -196,16 +197,16 @@ int LinkList::At(int pos)
 
 void LinkList::Clear()
 {
-	if (Head->Next == nullptr)//ÈôÎª¿Õ±í
+	if (Head->Next == nullptr)//è‹¥ä¸ºç©ºè¡¨
 		return;
 	else
 	{
-		LinkNode* Temp = Head->Next;//Í·½ÚµãµÄÏÂÒ»½ÚµãÊÓÎªÊý×éÏÂ±êÎª1
+		LinkNode* Temp = Head->Next;//å¤´èŠ‚ç‚¹çš„ä¸‹ä¸€èŠ‚ç‚¹è§†ä¸ºæ•°ç»„ä¸‹æ ‡ä¸º1
 		while (Temp != nullptr)
 		{
-			LinkNode* Temp_Next = Temp->Next;//±£´æÒªÉ¾³ý½ÚµãµÄºóÇý½Úµã
-			delete Temp;//É¾³ý½Úµã
-			Temp = Temp_Next;//ÒÆ¶¯±»É¾³ý½Úµã
+			LinkNode* Temp_Next = Temp->Next;//ä¿å­˜è¦åˆ é™¤èŠ‚ç‚¹çš„åŽé©±èŠ‚ç‚¹
+			delete Temp;//åˆ é™¤èŠ‚ç‚¹
+			Temp = Temp_Next;//ç§»åŠ¨è¢«åˆ é™¤èŠ‚ç‚¹
 		}
 		Head->Next = nullptr;//
 		Size = 0;
@@ -214,7 +215,7 @@ void LinkList::Clear()
 
 void LinkList::Destory()
 {
-	if (Head->Next == nullptr)//ÈôÎª¿Õ±í
+	if (Head->Next == nullptr)//è‹¥ä¸ºç©ºè¡¨
 	{
 		return;
 	}
