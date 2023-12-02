@@ -6,7 +6,7 @@ SeqStack::SeqStack(int maxSize)
 	{
 		StackArray = new int[maxSize];
 		if (StackArray == nullptr)
-			cerr << "´æ´¢·ÖÅä´íÎó" << endl;
+			cerr << "å­˜å‚¨åˆ†é…é”™è¯¯" << endl;
 		top = -1;
 		size = 0;
 		this->maxSize = Max;
@@ -17,7 +17,7 @@ SeqStack::SeqStack(int maxSize)
 		size = 0;
 		top = -1;
 		StackArray = nullptr;
-		cerr << "ÎÞÐ§Êý×é" << endl;
+		cerr << "æ— æ•ˆæ•°ç»„" << endl;
 	}
 }
 
@@ -59,17 +59,21 @@ bool SeqStack::isFull()
 
 void SeqStack::reSize(int newSize)
 {
-	int* newStack = new int[newSize];
-	if(newStack==nullptr)
-		cerr << "´æ´¢·ÖÅä´íÎó" << endl;
-	for (int i = 0; i < size; i++)
+	if (newSize <= 0)
+	  cerr << "Invalid Size" << endl;
+	else
 	{
-		newStack[i] = this->StackArray[i];
+	  int* newStack = new int[newSize];
+	  if(newStack==nullptr)
+	  cerr << "å­˜å‚¨åˆ†é…é”™è¯¯" << endl;
+	  for (int i = 0; i < size; i++)
+	{
+	  newStack[i] = this->StackArray[i];
 	}
-	delete []StackArray;
-	StackArray = newStack;
+	  delete []StackArray;
+	  StackArray = newStack;
+	}
 }
-
 int SeqStack::getSize()
 {
 	return top+1;
@@ -89,6 +93,6 @@ void SeqStack::print()
 {
 	for (int i = 0; i < size; i++)
 	{
-		cout << "µÚ" << i << "¸öÔªËØÎª£º" << this->StackArray[i] << endl;
+		cout << "ç¬¬" << i << "ä¸ªå…ƒç´ ä¸ºï¼š" << this->StackArray[i] << endl;
 	}
 }
