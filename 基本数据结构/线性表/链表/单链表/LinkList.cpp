@@ -79,9 +79,9 @@ int LinkList::getSize()
 
 bool LinkList::isEmpty()
 {
-	return Size==0;
+	//return Size==0;
+	return Head->Next == nullptr;
 }
-
 void LinkList::Delete()
 {
 	Size--;
@@ -225,8 +225,8 @@ void LinkList::setTail()
 int LinkList::caculateSize()
 {
 	int length = 0;
-	LinkNode* Temp = Head;
-	while (Temp->Next != nullptr)
+	LinkNode* Temp = Head->Next;
+	while (Temp)
 	{
 		length++;
 		Temp = Temp->Next;
